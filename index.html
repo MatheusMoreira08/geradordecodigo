@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gerador de Códigos</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+	<style>
+		body {
+			font-family: 'Bebas Neue', sans-serif;
+			background-image: linear-gradient(90deg, #1C1C1C, #221133);
+			color: white;
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+		}
+
+		h1 {
+			font-size: 3rem;
+			background: linear-gradient(90deg, #00BFFF, #00FA9A, #ADFF2F);
+			background-clip: text;
+			-webkit-background-clip: text;
+			color: transparent;
+			padding: 20px;
+			margin: 0;
+			position: relative;
+			text-align: center;
+		}
+
+		/* Quadrado em volta do título */
+		.title-container {
+			display: inline-block;
+			padding: 20px;
+			border: 5px solid;
+			border-image: linear-gradient(90deg, #00BFFF, #00FA9A, #ADFF2F)2;
+			border-radius: 10px;
+			position: relative;
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+		}
+
+		.box {
+			color: white;
+			background-color: rgba(0, 0, 0, 0.3);
+			padding: 20px;
+			border-radius: 15px;
+			text-align: center;
+			width: 80%;
+			max-width: 400px;
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+			margin-top: 20px;
+		}
+
+		/* Estilizando o campo de entrada */
+		input[type="text"] {
+			height: 40px;
+			background-color: transparent;
+			color: white;
+			border-image: linear-gradient(90deg, #00BFFF, #00FA9A, #ADFF2F)1;
+			border-radius: 12px;
+			font-size: 18px;
+			padding: 8px;
+			text-align: center;
+			width: 100%;
+			box-sizing: border-box;
+			transition: border-color 0.3s;
+		}
+
+		input[type="text"]:focus {
+			border-color: rgb(0, 255, 255);
+		}
+
+		/* Estilizando as opções de nível */
+		.nivel-container {
+			display: flex;
+			justify-content: space-between;
+			gap: 10px;
+			padding: 0 10px;
+		}
+
+		.nivel-container label {
+			font-size: 1rem;
+			color: white;
+			background-color: rgba(0, 0, 0, 0.2);
+			padding: 5px 10px;
+			border-radius: 8px;
+			transition: background-color 0.3s;
+		}
+
+		.nivel-container label:hover {
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		.nivel-container input[type="radio"] {
+			margin-right: 5px;
+			transform: scale(1.2);
+		}
+
+		/* Estilo do botão */
+		input[type="submit"] {
+			height: 40px;
+			background-color: #B0C4DE;
+			color: white;
+			border: none;
+			border-radius: 12px;
+			font-size: 18px;
+			padding: 8px;
+			display: block;
+			margin: 10px auto;
+			width: 250px;
+			text-align: center;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #A9B8C8;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="title-container">
+		<h1>Gerador de Códigos</h1>
+	</div>
+
+	<div class="box">
+		<form onsubmit="mostrarAlerta(event)">
+			<input type="text" id="inputTexto" placeholder="Qual linguagem?">
+			<p>Qual o nível?</p>
+			<div class="nivel-container">
+				<label for="avançado"><input type="radio" id="avançado" name="nivel" value="avançado" required> Avançado</label>
+				<label for="intermediario"><input type="radio" id="intermediario" name="nivel" value="intermediario" required>
+					Intermediário</label>
+				<label for="basico"><input type="radio" id="basico" name="nivel" value="basico" required> Básico</label>
+			</div>
+			<input type="submit" value="Gerar">
+		</form>
+	</div>
+
+	<script>
+		function mostrarAlerta(event) {
+			event.preventDefault();
+			alert('Opção selecionada e botão Gerar clicado!');
+		}
+	</script>
+</body>
+
+</html>
