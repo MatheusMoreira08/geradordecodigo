@@ -1,7 +1,7 @@
 import exercicios from './dados.js';
 
-// Seleção de Elementos
-const btnGerar = document.getElementById('btn-gerar'); // Corrigido para pegar pelo ID
+// Elementos
+const btnGerar = document.getElementById('btn-gerar');
 const areaResultado = document.getElementById('resultado');
 const btnSolucao = document.getElementById('btn-solucao');
 const solucaoContainer = document.getElementById('solucao-container');
@@ -12,59 +12,61 @@ const copyMsg = document.getElementById('copy-msg');
 
 let exercicioAtual = null;
 
-// --- LÓGICA DE TEMA ---
+// --- FUNÇÃO PARA ATUALIZAR ÍCONE ---
+function atualizarIconeTema() {
+	// Se tem a classe 'dark', o ícone deve ser Sol (para mudar pra claro)
+	// Se NÃO tem 'dark', o ícone deve ser Lua (para mudar pra escuro)
+	if (document.documentElement.classList.contains('dark')) {
+		themeIcon.innerText = '☀️';
+	} else {
+		themeIcon.innerText = '🌙';
+	}
+}
+
+// --- TEMA (Lógica) ---
 themeBtn.addEventListener('click', () => {
 	document.documentElement.classList.toggle('dark');
 	const isDark = document.documentElement.classList.contains('dark');
-	themeIcon.innerText = isDark ? '☀️' : '🌙';
 	localStorage.setItem('theme', isDark ? 'dark' : 'light');
+	atualizarIconeTema();
 });
 
-// Aplicar tema salvo
+// Ao carregar a página
 if (localStorage.theme === 'light') {
 	document.documentElement.classList.remove('dark');
-	themeIcon.innerText = '🌙';
 } else {
 	document.documentElement.classList.add('dark');
-	themeIcon.innerText = '☀️';
 }
+atualizarIconeTema(); // Garante o ícone certo ao abrir
 
-// --- LÓGICA DE GERAR CÓDIGO ---
+// --- GERAR CÓDIGO ---
 btnGerar.addEventListener('click', () => {
 	const linguagemBusca = document.getElementById('linguagem').value;
 	const nivelChecked = document.querySelector('input[name="nivel"]:checked');
 
 	if (!linguagemBusca || !nivelChecked) {
-		alert("Por favor, selecione uma linguagem e um nível!");
+		alert("Selecione linguagem e nível!");
 		return;
 	}
 
-	const nivelBusca = nivelChecked.value;
-
-	// Filtra a lista
-	const listaFiltrada = exercicios.filter(ex =>
-		ex.linguagem === linguagemBusca && ex.nivel === nivelBusca
+	const lista = exercicios.filter(ex =>
+		ex.linguagem === linguagemBusca && ex.nivel === nivelChecked.value
 	);
 
-	if (listaFiltrada.length > 0) {
-		const randomIdx = Math.floor(Math.random() * listaFiltrada.length);
-		exercicioAtual = listaFiltrada[randomIdx];
-
-		// Exibe o enunciado
+	if (lista.length > 0) {
+		const randomIdx = Math.floor(Math.random() * lista.length);
+		exercicioAtual = lista[randomIdx];
 		areaResultado.innerText = exercicioAtual.enunciado;
 
-		// Reseta o botão de solução
 		btnSolucao.classList.remove('hidden');
 		solucaoContainer.classList.add('hidden');
-		solucaoContainer.innerText = ""; // Limpa solução anterior
+		solucaoContainer.innerText = "";
 	} else {
-		areaResultado.innerText = `Desculpe, exercícios não encontrados para esta seleção.`;
-		btnSolucao.classList.add('hidden');
-		solucaoContainer.classList.add('hidden');
+		areaResultado.innerText = "Nenhum exercício encontrado.";
 	}
 });
 
-// --- LÓGICA DE VER SOLUÇÃO ---
+// --- SOLUÇÃO ---
 btnSolucao.addEventListener('click', () => {
 	if (exercicioAtual) {
 		solucaoContainer.innerText = exercicioAtual.solucao;
@@ -72,23 +74,19 @@ btnSolucao.addEventListener('click', () => {
 	}
 });
 
-// --- LÓGICA DE COPIAR (CORRIGIDA) ---
+// --- COPIAR (Com Debug) ---
 copyBtn.addEventListener('click', async () => {
-	const textoParaCopiar = areaResultado.innerText;
+	const texto = areaResultado.innerText;
+	console.log("Tentando copiar:", texto); // Abra o F12 para ver isso
 
-	if (!textoParaCopiar) return;
+	if (!texto) return;
 
 	try {
-		await navigator.clipboard.writeText(textoParaCopiar);
-
-		// Mostrar mensagem de sucesso
+		await navigator.clipboard.writeText(texto);
 		copyMsg.classList.remove('hidden');
-		setTimeout(() => {
-			copyMsg.classList.add('hidden');
-		}, 2000);
-
+		setTimeout(() => copyMsg.classList.add('hidden'), 2000);
 	} catch (err) {
-		console.error('Falha ao copiar: ', err);
-		alert("Erro ao copiar o texto. Permissão negada pelo navegador?");
+		console.error('Erro ao copiar:', err);
+		alert("Erro ao copiar! Verifique as permissões do navegador.");
 	}
 });
