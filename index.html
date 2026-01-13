@@ -26,55 +26,67 @@
 				<option value="" disabled selected>Selecione uma linguagem...</option>
 				<option value="javascript">JavaScript</option>
 				<option value="python">Python</option>
-				<option value="php">PHP</option>
+				<option value="java">Java</option>
+				<option value="typescript">TypeScript</option>
+				<option value="csharp">C#</option>
 				<option value="cpp">C++</option>
+				<option value="php">PHP</option>
+				<option value="go">Go (Golang)</option>
+				<option value="rust">Rust</option>
+				<option value="sql">SQL</option>
 			</select>
 		</div>
 
 		<div class="flex flex-col gap-2">
 			<span class="text-sm font-semibold">Qual o nível?</span>
 			<div class="flex gap-4 text-sm">
-				<label class="flex items-center gap-1"><input type="radio" name="nivel" value="basico">
-					Básico</label>
-				<label class="flex items-center gap-1"><input type="radio" name="nivel" value="intermediario">
-					Intermediário</label>
-				<label class="flex items-center gap-1"><input type="radio" name="nivel" value="avancado">
-					Avançado</label>
+				<label class="flex items-center gap-1 cursor-pointer">
+					<input type="radio" name="nivel" value="basico"> Básico
+				</label>
+				<label class="flex items-center gap-1 cursor-pointer">
+					<input type="radio" name="nivel" value="intermediario"> Intermediário
+				</label>
+				<label class="flex items-center gap-1 cursor-pointer">
+					<input type="radio" name="nivel" value="avancado"> Avançado
+				</label>
 			</div>
 		</div>
-		</div>
 
-		<button
+		<button id="btn-gerar"
 			class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg active:scale-95 transition-transform">
 			Gerar Código
 		</button>
 
-		<div class="flex justify-end items-center gap-2 -mb-4">
-			<span id="copy-msg" class="text-xs text-green-500 font-bold hidden">Copiado!</span>
+		<div class="flex flex-col gap-2">
 
-			<button id="copy-btn"
-				class="p-2 rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-				title="Copiar">
-				📋
-			</button>
+			<div class="flex justify-end items-center gap-2">
+				<span id="copy-msg" class="text-xs text-green-500 font-bold hidden transition-opacity">Copiado!</span>
 
-			<button id="theme-toggle"
-				class="p-2 rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-				<span id="theme-icon">🌙</span>
-			</button>
+				<button id="copy-btn"
+					class="p-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+					title="Copiar Código">
+					📋
+				</button>
+
+				<button id="theme-toggle"
+					class="p-2 rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+					title="Mudar Tema">
+					<span id="theme-icon">🌙</span>
+				</button>
+			</div>
+
+			<pre id="resultado"
+				class="min-h-[150px] p-4 bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 overflow-x-hidden whitespace-pre-wrap break-words text-sm font-mono text-green-400 w-full"></pre>
 		</div>
 
-
-		<pre id="resultado"
-			class="min-h-[150px] p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 overflow-auto text-sm font-mono text-gray-800 dark:text-green-400"></pre>
-
 		<button id="btn-solucao"
-			class="hidden mt-4 w-full py-2 border-2 border-blue-500 text-blue-500 font-bold rounded-lg hover:bg-blue-500 hover:text-white transition-all">
+			class="hidden w-full py-2 border-2 border-blue-500 text-blue-500 font-bold rounded-lg hover:bg-blue-500 hover:text-white transition-all">
 			Ver Solução
 		</button>
 
 		<pre id="solucao-container"
-			class="hidden mt-2 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-sm font-mono text-green-700 dark:text-green-300 animate-fade-in"></pre>
+			class="hidden mt-2 p-4 bg-gray-800 border border-gray-700 rounded-lg text-sm font-mono text-green-300 whitespace-pre-wrap break-words w-full animate-fade-in"></pre>
+
 	</main>
 
 	<script type="module" src="js/main.js"></script>
