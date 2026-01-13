@@ -33,8 +33,5 @@ O projeto permite que o usuário selecione entre as 10 linguagens mais populares
     ```
 4.  Abra o arquivo `index.html` no seu navegador (recomendado usar a extensão **Live Server** no VS Code).
 
-## 📝 Licença
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ---
 Desenvolvido por [Matheus Moreira](https://github.com/MatheusMoreira08)
