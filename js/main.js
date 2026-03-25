@@ -12,10 +12,8 @@ const copyMsg = document.getElementById('copy-msg');
 
 let exercicioAtual = null;
 
-// --- FUNÇÃO PARA ATUALIZAR ÍCONE ---
 function atualizarIconeTema() {
-	// Se tem a classe 'dark', o ícone deve ser Sol (para mudar pra claro)
-	// Se NÃO tem 'dark', o ícone deve ser Lua (para mudar pra escuro)
+
 	if (document.documentElement.classList.contains('dark')) {
 		themeIcon.innerText = '☀️';
 	} else {
@@ -31,15 +29,13 @@ themeBtn.addEventListener('click', () => {
 	atualizarIconeTema();
 });
 
-// Ao carregar a página
 if (localStorage.theme === 'light') {
 	document.documentElement.classList.remove('dark');
 } else {
 	document.documentElement.classList.add('dark');
 }
-atualizarIconeTema(); // Garante o ícone certo ao abrir
+atualizarIconeTema();
 
-// --- GERAR CÓDIGO ---
 btnGerar.addEventListener('click', () => {
 	const linguagemBusca = document.getElementById('linguagem').value;
 	const nivelChecked = document.querySelector('input[name="nivel"]:checked');
@@ -66,7 +62,6 @@ btnGerar.addEventListener('click', () => {
 	}
 });
 
-// --- SOLUÇÃO ---
 btnSolucao.addEventListener('click', () => {
 	if (exercicioAtual) {
 		solucaoContainer.innerText = exercicioAtual.solucao;
@@ -74,10 +69,9 @@ btnSolucao.addEventListener('click', () => {
 	}
 });
 
-// --- COPIAR (Com Debug) ---
 copyBtn.addEventListener('click', async () => {
 	const texto = areaResultado.innerText;
-	console.log("Tentando copiar:", texto); // Abra o F12 para ver isso
+	console.log("Tentando copiar:", texto);
 
 	if (!texto) return;
 
