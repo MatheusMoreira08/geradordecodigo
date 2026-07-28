@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gerador de exercícios de programação por linguagem e nível de dificuldade. Pratique JavaScript, Python, Java, TypeScript e C#.">
+  <title>Gerador de Exercícios de Código</title>
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+
+  <div class="container" role="main">
+
+    <!-- ── Card principal ─────────────────────────────────── -->
+    <div class="card">
+
+      <!-- Header -->
+      <header class="header">
+        <div>
+          <h1 class="titulo">⌨️ Gerador de Código</h1>
+          <p class="subtitulo">Pratique exercícios por linguagem e nível</p>
+        </div>
+        <button
+          id="btn-tema"
+          class="btn-tema"
+          aria-label="Mudar para tema escuro"
+          title="Alternar tema"
+        >🌙</button>
+      </header>
+
+      <!-- Seleções -->
+      <div class="selects">
+        <div class="campo">
+          <label for="linguagem">Linguagem</label>
+          <select id="linguagem" name="linguagem">
+            <option value="" disabled selected>Selecione...</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="typescript">TypeScript</option>
+            <option value="csharp">C#</option>
+            <option value="cpp">C++</option>
+            <option value="php">PHP</option>
+            <option value="go">Go</option>
+            <option value="kotlin">Kotlin</option>
+            <option value="swift">Swift</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="nivel">Dificuldade</label>
+          <select id="nivel" name="nivel">
+            <option value="" disabled selected>Selecione...</option>
+            <option value="basico">Básico</option>
+            <option value="intermediario">Intermediário</option>
+            <option value="avancado">Avançado</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Mensagem de erro de validação -->
+      <p id="msg-erro" class="msg-erro" role="alert" hidden></p>
+
+      <!-- Botão principal -->
+      <button id="btn-gerar" class="btn-gerar" type="button">
+        🎲 Gerar Exercício
+      </button>
+
+      <!-- ── Área do exercício (inicialmente oculta) ──────── -->
+      <section id="area-exercicio" class="area-exercicio" aria-live="polite" hidden>
+
+        <!-- Badges de linguagem e nível -->
+        <div class="badges">
+          <span id="badge-linguagem" class="badge badge-linguagem"></span>
+          <span id="badge-nivel"     class="badge badge-nivel"></span>
+        </div>
+
+        <!-- Enunciado -->
+        <p id="enunciado" class="enunciado"></p>
+
+        <!-- Ações -->
+        <div class="acoes">
+          <button id="btn-solucao" class="btn-solucao" type="button">
+            👁️ Ver Solução
+          </button>
+          <button id="btn-copiar" class="btn-copiar" type="button" title="Copiar solução">
+            📋 Copiar
+          </button>
+        </div>
+
+        <!-- Feedback de cópia -->
+        <span id="msg-copiar" class="msg-copiar" aria-live="polite" hidden></span>
+
+        <!-- Container da solução (inicialmente oculto) -->
+        <div id="container-solucao" class="container-solucao" hidden>
+          <pre><code id="code-solucao"></code></pre>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- ── Footer com contador ────────────────────────────── -->
+    <footer class="footer">
+      <div class="contador-wrapper" title="Exercícios gerados nesta sessão">
+        🎯 Exercícios gerados:
+        <span id="contador">0</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
