@@ -1,4 +1,6 @@
-const exercicios = [
+import { Exercicio } from '../types';
+
+const exercicios: Exercicio[] = [
     // --- BÁSICO ---
     {
         linguagem: "javascript",
