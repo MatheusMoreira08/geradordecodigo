@@ -188,7 +188,7 @@ export const App: React.FC = () => {
         />
 
         {/* Workspace Principal em Grid de 2 Colunas (LeetCode / Replit Style) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
           {/* Coluna Esquerda: Enunciado do Desafio (5 cols) */}
           <div className="md:col-span-5 h-full">
             <ExerciseCard

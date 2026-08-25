@@ -31,7 +31,7 @@ export const ExerciseFilters: React.FC<ExerciseFiltersProps> = ({
   onOpenEstatisticas,
 }) => {
   return (
-    <div className="w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl border border-slate-200/80 dark:border-slate-800 p-4 md:p-5 flex flex-col gap-4 shadow-xl shadow-indigo-500/5">
+    <div className="relative z-30 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl border border-slate-200/80 dark:border-slate-800 p-4 md:p-5 flex flex-col gap-4 shadow-xl shadow-indigo-500/5">
       {/* Linha Principal de Controles em Grid Horizontal */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
         {/* Linguagem (3 cols) */}

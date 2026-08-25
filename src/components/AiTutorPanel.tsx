@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bot, Lightbulb, AlertTriangle, Key, Sparkles, X } from 'lucide-react';
 import { Exercicio, ResultadoExecucao, DicaIa, ExplicacaoErroIa } from '../types';
 import { AiAssistantService } from '../services';
@@ -27,6 +27,15 @@ export const AiTutorPanel: React.FC<AiTutorPanelProps> = ({
 
   const [explicacaoErro, setExplicacaoErro] = useState<ExplicacaoErroIa | null>(null);
   const [isCarregandoErro, setIsCarregandoErro] = useState<boolean>(false);
+
+  // Resetar estados quando o modal for aberto ou o exercício mudar
+  useEffect(() => {
+    if (isOpen) {
+      setNivelDica(1);
+      setDicaAtual(null);
+      setExplicacaoErro(null);
+    }
+  }, [isOpen, exercicio?.id]);
 
   if (!isOpen) return null;
 

@@ -40,7 +40,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   }, []);
 
   return (
-    <div className="flex flex-col gap-2 relative" ref={containerRef}>
+    <div className={`flex flex-col gap-2 relative ${isOpen ? 'z-50' : 'z-10'}`} ref={containerRef}>
       <label className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 uppercase tracking-wider">
         {icon}
         <span>{label}</span>
@@ -64,7 +64,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
 
       {/* Popover Customizado de Opções */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl max-h-60 overflow-y-auto p-1.5 flex flex-col gap-1 animate-fade-in">
+        <div className="absolute top-full left-0 right-0 mt-2 z-50 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl max-h-60 overflow-y-auto p-1.5 flex flex-col gap-1 animate-fade-in ring-1 ring-black/5 dark:ring-white/10">
           {options.map((opt) => {
             const isSelected = opt.valor === value;
             return (

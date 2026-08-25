@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@rolldown/binding-win32-x64-msvc": "^1.2.5",
     "tailwindcss": "^3.4.10",
     "typescript": "^6.0.3",
     "vite": "^8.0.13"

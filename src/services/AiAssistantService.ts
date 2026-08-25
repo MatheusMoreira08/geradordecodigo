@@ -213,6 +213,7 @@ Responda estritamente no formato JSON:
           (exercicio.categoria || 'método de array') +
           `) resolve este problema em ${exercicio.linguagem}?`,
       };
+    } else if (nivelDica === 2) {
       const statusCodigo = codigoUsuario.trim()
         ? 'Você já começou a escrever código no editor.'
         : 'Você ainda não começou a escrever no editor.';
